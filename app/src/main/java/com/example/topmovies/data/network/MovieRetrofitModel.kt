@@ -1,7 +1,10 @@
-package com.example.topmovies.domain
+package com.example.topmovies.data.network
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 
-data class MovieModel(
+@Parcelize
+data class MovieRetrofitModel(
     val adult: Boolean,
     val backdrop_path: String,
     val genre_ids: List<Int>,
@@ -16,6 +19,4 @@ data class MovieModel(
     val video: Boolean,
     val vote_average: Double,
     val vote_count: Int
-)
-
-
+):Parcelable
