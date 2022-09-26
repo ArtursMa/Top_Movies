@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
-import com.example.topmovies.R
+
 import com.example.topmovies.databinding.MovieItemBinding
 import com.example.topmovies.domain.MovieModel
 import java.lang.RuntimeException
@@ -15,7 +15,8 @@ import java.lang.RuntimeException
 class MovieListAdapter:ListAdapter<MovieModel,MovieModelViewHolder>(MovieListDiffUtillsCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieModelViewHolder {
         val binding = when(viewType){
-        MOVIE_ITEM -> MovieItemBinding.inflate(LayoutInflater.from(parent.context))
+            MOVIE_ITEM -> MovieItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+
         else -> throw RuntimeException("Unknown view type")
         }
 
@@ -29,7 +30,7 @@ class MovieListAdapter:ListAdapter<MovieModel,MovieModelViewHolder>(MovieListDif
         when(binding){
             is MovieItemBinding ->{
                 binding.titleTextView.text = item.title
-                binding.moviePoster.setImageURI(Uri.parse(item.posterURI))
+//                binding.moviePoster.setImageURI(Uri.parse(item.posterURI))
 
             }
 
