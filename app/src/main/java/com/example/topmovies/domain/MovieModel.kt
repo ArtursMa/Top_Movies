@@ -1,8 +1,6 @@
 package com.example.topmovies.domain
 
-<<<<<<<<< Temporary merge branch 1
-data class MovieModel(val id:Int,val title:String,val genre:String,val movieDescription:String,val posterURI:String)
-=========
+
 data class MovieModel(
     val adult: Boolean,
     val backdrop_path: String,
@@ -19,4 +17,4 @@ data class MovieModel(
     val vote_average: Double,
     val vote_count: Int
 )
->>>>>>>>> Temporary merge branch 2
+

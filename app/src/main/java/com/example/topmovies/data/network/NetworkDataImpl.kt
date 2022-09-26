@@ -21,7 +21,8 @@ class NetworkDataImpl:TopMoviesRepository {
         val response = retrofit.getTopMovies().results
         val responseMovieModel = ArrayList<MovieModel>()
         for(n in response){
-            responseMovieModel.add(MovieModel(n.id,n.title,n.overview,n.poster_path))
+            responseMovieModel.add(MovieModel(n.adult,n.backdrop_path,n.genre_ids,n.id,n.original_language,
+            n.original_title,n.overview,n.popularity,n.poster_path,n.release_date,n.title,n.video,n.vote_average,n.vote_count))
 
         }
         return responseMovieModel
