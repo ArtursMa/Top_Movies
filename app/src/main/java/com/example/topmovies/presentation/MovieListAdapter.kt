@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.ListAdapter
 
 import com.example.topmovies.databinding.MovieItemBinding
 import com.example.topmovies.domain.MovieModel
+import com.squareup.picasso.Picasso
 import java.lang.RuntimeException
 
 
@@ -29,8 +30,8 @@ class MovieListAdapter:ListAdapter<MovieModel,MovieModelViewHolder>(MovieListDif
         val binding = holder.viewBinding
         when(binding){
             is MovieItemBinding ->{
-                binding.titleTextView.text = item.title
-//                binding.moviePoster.setImageURI(Uri.parse(item.posterURI))
+//                binding.titleTextView.text = item.title
+              Picasso.get().load("https://image.tmdb.org/t/p/w500/"+item.poster_path).into(binding.imageView);
 
             }
 
