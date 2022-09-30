@@ -69,5 +69,13 @@ dependencies {
 
     //coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1"
+    //picasso
+    implementation 'com.squareup.picasso:picasso:2.8'
+    //room
+    implementation("androidx.room:room-ktx:2.4.3")
+    implementation("androidx.room:room-runtime:2.4.3")
+    annotationProcessor("androidx.room:room-compiler:2.4.3")
+
+
 
 }
