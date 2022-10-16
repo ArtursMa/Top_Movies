@@ -1,7 +1,7 @@
 package com.example.topmovies.presentation
 
-import android.database.DatabaseUtils
-import android.net.Uri
+
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +14,7 @@ import java.lang.RuntimeException
 
 
 class MovieListAdapter:ListAdapter<MovieModel,MovieModelViewHolder>(MovieListDiffUtillsCallback()) {
+    var myClick:((movieModel:MovieModel)->Unit)?=null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieModelViewHolder {
         val binding = when(viewType){
             MOVIE_ITEM -> MovieItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
@@ -27,16 +28,15 @@ class MovieListAdapter:ListAdapter<MovieModel,MovieModelViewHolder>(MovieListDif
 
     override fun onBindViewHolder(holder: MovieModelViewHolder, position: Int) {
         val item = getItem(position)
-        val binding = holder.viewBinding
-        when(binding){
-            is MovieItemBinding ->{
-//                binding.titleTextView.text = item.title
-              Picasso.get().load("https://image.tmdb.org/t/p/w500/"+item.poster_path).into(binding.imageView);
+        val binding = holder.viewBinding as MovieItemBinding
+        Picasso.get().load("https://image.tmdb.org/t/p/w500/"+item.poster_path).into(binding.imageView);
+        holder.itemView.setOnClickListener(View.OnClickListener {
 
-            }
+            Log.i("clicked","clicked")
+            myClick?.invoke(currentList[position])
+        })
 
 
-        }
 
 
 

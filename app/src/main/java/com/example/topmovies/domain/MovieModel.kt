@@ -1,6 +1,9 @@
 package com.example.topmovies.domain
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class MovieModel(
     val adult: Boolean,
     val backdrop_path: String,
@@ -16,5 +19,5 @@ data class MovieModel(
     val video: Boolean,
     val vote_average: Double,
     val vote_count: Int
-)
+):Parcelable
 

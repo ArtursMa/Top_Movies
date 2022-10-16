@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.topmovies.R
 import com.example.topmovies.data.network.NetworkDataImpl
 
 import com.example.topmovies.databinding.MainPageFragmentBinding
@@ -24,10 +25,6 @@ class MainPageFragment: Fragment() {
     private val viewModel by viewModels<TopMoviesVieModel> {
         TopMoviesVieModel.TopMoviesViewModelFactory(GetTopMoviesUSeCse(NetworkDataImpl()))
     }
-
-
-
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -37,18 +34,26 @@ class MainPageFragment: Fragment() {
         viewModel.getTopMovies()
         val recyclerView = binding.recyclerView
         val adapter = MovieListAdapter()
-//        recyclerView.setHasFixedSize(true)
+
+//       recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = GridLayoutManager(requireContext(),2)
         recyclerView.adapter = adapter
         viewModel.topMovieLiveData.observe(viewLifecycleOwner, Observer {
             adapter.submitList(it)
         })
-
-
-
+        adapter.myClick = {
+           startMovieFragment(it)
+        }
 
 
         return binding.root
+    }
+    fun startMovieFragment(movieModel: MovieModel){
+        requireActivity().supportFragmentManager.
+        beginTransaction().addToBackStack(null).
+        replace(R.id.fragmentContainerView,MovieFragment.getMovieFragmentInstance(movieModel)).commit()
+
+
     }
 
 }
