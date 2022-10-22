@@ -14,7 +14,7 @@ import java.lang.RuntimeException
 
 
 class MovieListAdapter:ListAdapter<MovieModel,MovieModelViewHolder>(MovieListDiffUtillsCallback()) {
-    var myClick:((movieModel:MovieModel)->Unit)?=null
+    var myClick:((clickedPosition:Int)->Unit)?=null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieModelViewHolder {
         val binding = when(viewType){
             MOVIE_ITEM -> MovieItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
@@ -33,7 +33,7 @@ class MovieListAdapter:ListAdapter<MovieModel,MovieModelViewHolder>(MovieListDif
         holder.itemView.setOnClickListener(View.OnClickListener {
 
             Log.i("clicked","clicked")
-            myClick?.invoke(currentList[position])
+            myClick?.invoke(position)
         })
 
 

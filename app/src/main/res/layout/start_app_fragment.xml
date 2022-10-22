@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/startFragmentLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    >
+    <Button
+        android:id="@+id/topMoviesButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/top_movies"
+        android:layout_margin="16dp"
+        >
+
+    </Button>
+    <Button
+        android:id="@+id/myTopMoviesButtob"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/my_movies_top"
+        android:layout_margin="16dp"
+        >
+
+    </Button>
+
+</LinearLayout>

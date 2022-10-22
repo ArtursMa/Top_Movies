@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
@@ -22,7 +23,7 @@ import com.example.topmovies.domain.MovieModel
 
 class MainPageFragment: Fragment() {
     private lateinit var binding:MainPageFragmentBinding
-    private val viewModel by viewModels<TopMoviesVieModel> {
+    private val viewModel by activityViewModels<TopMoviesVieModel> {
         TopMoviesVieModel.TopMoviesViewModelFactory(GetTopMoviesUSeCse(NetworkDataImpl()))
     }
     override fun onCreateView(
@@ -48,12 +49,25 @@ class MainPageFragment: Fragment() {
 
         return binding.root
     }
-    fun startMovieFragment(movieModel: MovieModel){
+    fun startMovieFragment(clickedMovie: Int){
         requireActivity().supportFragmentManager.
         beginTransaction().addToBackStack(null).
-        replace(R.id.fragmentContainerView,MovieFragment.getMovieFragmentInstance(movieModel)).commit()
+        replace(R.id.fragmentContainerView,MovieFragment.getMovieFragmentInstance(clickedMovie)).commit()
 
 
     }
+
+    companion object{
+        fun getTopMoviesFragmentInstance():MainPageFragment{
+            return MainPageFragment()
+
+        }
+    }
+
+
+
+
+
+
 
 }
